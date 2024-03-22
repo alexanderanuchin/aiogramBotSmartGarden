@@ -1,10 +1,13 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+import emoji
 
 start_keyboard = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text='Главная страница')],
-        [KeyboardButton(text='О магазине')],
-        [KeyboardButton(text='Варианты доставки'), KeyboardButton(text='Варианты оплаты')],
+        [KeyboardButton(text='🏠 Главная страница 🏠')],
+        [KeyboardButton(text='🧺 Каталог товаров 🧺')],
+        [KeyboardButton(text='📦 Варианты доставки 📦')],
+        [KeyboardButton(text='💰 Варианты оплаты 💰')],
+        [KeyboardButton(text='🍀 О магазине 🍀')],
     ],
     resize_keyboard=True,
     one_time_keyboard=True,
@@ -12,4 +15,5 @@ start_keyboard = ReplyKeyboardMarkup(
     selective=False,
     row_width=2
 )
+
 

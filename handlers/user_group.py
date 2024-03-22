@@ -2,11 +2,10 @@ from aiogram import F, types, Router
 from aiogram.filters import or_f, CommandStart, Command
 from string import punctuation
 from filters.chat_types import ChatTypeFilter
+from base_direct.bad_words import restricted_words
 
 user_group_router = Router()
 user_group_router.message.filter(ChatTypeFilter(['group', 'supergroup']))
-
-restricted_words = {'плохие', 'слова', 'здесь'}
 
 
 def clean_text(text: str):
