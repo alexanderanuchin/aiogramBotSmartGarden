@@ -10,10 +10,15 @@ user_private_router.message.filter(ChatTypeFilter(['private']))
 
 @user_private_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    await message.answer("_Привет, я виртуальный помошник_", reply_markup=reply.start_keyboard, parse_mode="Markdown")
+    await message.answer("_Привет, я виртуальный помошник_", reply_markup=reply.builder_keyboard_.as_markup(
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        input_field_placeholder='Что вас интересует?',
+        selective=False,
+    ), parse_mode="Markdown")
 
 
-@user_private_router.message(or_f(Command('homepage'), F.text.lower().contains('главная страница')))
+@user_private_router.message(or_f(Command('menu'), F.text.lower().contains('меню')))
 async def menu_cmd(message: types.Message):
     await message.answer('Главная страница:')
 
@@ -37,3 +42,9 @@ async def payment_cmd(message: types.Message):
 @user_private_router.message(or_f(Command('about'), F.text.lower().contains('о магазине')))
 async def status_cmd(message: types.Message):
     await message.answer('О магазине:')
+
+
+@user_private_router.message(or_f(Command('contact'), F.text.lower().contains('о магазине')))
+async def get_contact(message: types.Message):
+    await message.answer(f"Данные получены", reply_markup=reply.request_keyboard)
+    await message.answer(str(message.contact))

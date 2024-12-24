@@ -14,7 +14,6 @@ from common.bot_cmds_list import private
 
 ALLOWED_UPDATE = ['message', 'edited_message']
 
-
 bot = Bot(token=os.getenv('BOT_TOKEN'))
 
 dp = Dispatcher()
